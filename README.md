@@ -38,7 +38,7 @@
 + [QmlBorderimage](../QmlBorderimage/) 
 + [QmlCanvas](../QmlCanvas/) 
 + [QmlCanvas_Gradient](../QmlCanvas_Gradient/) 
-+ [QmlShaderEffect](../QmlShaderEffect/) does not work 
++ [QmlShaderEffect](../QmlShaderEffect/) 
 + [QmlSignal](../QmlSignal/)
 + [QmlSignalButton](../QmlSignalButton/)
 + [QmlFocus_KeyNavigation](../QmlFocus_KeyNavigation/)
