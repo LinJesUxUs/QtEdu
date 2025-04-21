@@ -6,8 +6,8 @@ Rectangle {
     height: sourceImage.height
     Image {
         id: sourceImage
-        // width: sourceWidth
-        // height: sourceHeight
+        width: parent.width
+        height: parent.height
         visible: false
         source: "qrc:/images/Linux_old.png"
     }
@@ -17,5 +17,4 @@ Rectangle {
         property variant source: sourceImage
         fragmentShader: "qrc:/src/shader.frag.qsb"
     }
-
 }

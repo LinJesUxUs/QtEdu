@@ -18,6 +18,11 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+# Checks for shader compiling needs. Then compile
+system([ src/shader.frag -nt src/shader.frag.qsb ]) {
+    system(qsb -b --glsl 330 -o src/shader.frag.qsb src/shader.frag)
+}
+
 #DISTFILES += \
 resources.files += \
     images/Linux.jpg \
@@ -38,3 +43,4 @@ resources.files += \
 resources.prefix = /
 
 RESOURCES = resources
+CONFIG += resources_big
