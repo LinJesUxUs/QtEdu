@@ -2,19 +2,19 @@ import QtQuick
 
 Rectangle {
     color: "black"
-    width: sourceImage.width
-    height: sourceImage.height
+    anchors.fill: parent
     Image {
         id: sourceImage
-        width: parent.width
-        height: parent.height
+        height: Math.min(parent.width, parent.height)
         visible: false
         source: "qrc:/images/Linux_old.png"
+        fillMode: Image.PreserveAspectFit
+        anchors.centerIn: parent
     }
     ShaderEffect {
-        width: sourceImage.width
-        height: sourceImage.height
+        anchors.fill: sourceImage
         property variant source: sourceImage
         fragmentShader: "qrc:/src/shader.frag.qsb"
+        // opacity: 0.5
     }
 }
