@@ -13,11 +13,12 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
+        aqtversion: '==3.1.*'
         version: '6.2.4'
+        host: 'linux'
         target: 'android'
         arch: 'android_arm64-v8a'
         modules: 'qtimageformats qtshadertools'
-        cache: true
     - name: Pry into dirs
       run: ls -lh && ls -lh ..
         
