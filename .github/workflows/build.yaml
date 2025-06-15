@@ -10,14 +10,24 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install Qt
+    - name: Install Qt for Desktop
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.2.4'
+        host: 'linux'
+        target: 'desktop'
+        arch: 'gcc_64'
+        modules: 'qtimageformats qtshadertools'
+
+    - name: Install Qt for Android
       uses: jurplel/install-qt-action@v3
       with:
         version: '6.2.4'
         host: 'linux'
         target: 'android'
         arch: 'android_arm64-v8a'
-        # modules: 'qtimageformats qtshadertools'
+        modules: 'qtimageformats qtshadertools'
+
     - name: Pry into dirs
       run: ls -lh && ls -lh ..
         
