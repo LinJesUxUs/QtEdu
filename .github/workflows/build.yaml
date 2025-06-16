@@ -37,16 +37,14 @@ jobs:
 
     - run: sdkmanager "ndk;22.1.7171670"
 
-    - run: echo $ANDROID_HOME $QT_ANDROID_SDK_ROOT
-
     - name: Pry into dirs
-      run: ls -lh ../Qt/ && ls -lh ../Qt/*
+      run: ls -lh ../Qt/6.2.4/android_arm64_v8a/bin/ && ls -lh ../Qt/6.2.4/gcc_64/bin/
 
     - name: Build App
       run: |
-        ../Qt/6.2.4/android_arm64_v8a/bin/./qmake» edu.pro -spec android-clang CONFIG+=release
+        qmake» edu.pro -spec android-clang CONFIG+=release
         make -f Makefile qmake_all
         make -j4
         make INSTALL_ROOT=android-build install
-        ../Qt/6.2.4/gcc_64/bin/./androiddeployqt --input android-QmlShaderEffect-deployment-settings.json --output android-build --android-platform android-31 --gradle
+        androiddeployqt --input android-QmlShaderEffect-deployment-settings.json --output android-build --android-platform android-31 --gradle
         
