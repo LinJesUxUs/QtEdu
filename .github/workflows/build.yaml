@@ -46,6 +46,7 @@ jobs:
         export PATH="$(pwd)/../Qt/6.2.4/android_arm64_v8a/bin:$(pwd)/../Qt/6.2.4/gcc_64/bin:$JAVA_HOME/bin:$ANDROID_SDK_ROOT/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
         qmake edu.pro -spec android-clang CONFIG+=release
         make -f Makefile qmake_all
+        ls src . -lh
         make -j4
         make INSTALL_ROOT=android-build install
         androiddeployqt --input android-QmlShaderEffect-deployment-settings.json --output android-build --android-platform android-31 --gradle
