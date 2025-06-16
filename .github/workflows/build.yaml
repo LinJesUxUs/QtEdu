@@ -42,6 +42,7 @@ jobs:
 
     - name: Build App
       run: |
+        export PATH="$(pwd)/../Qt/6.2.4/gcc_64/bin:$(pwd)/../Qt/6.2.4/android_arm64_v8a/bin:$PATH"
         qmake edu.pro -spec android-clang CONFIG+=release
         make -f Makefile qmake_all
         make -j4
