@@ -28,6 +28,27 @@ jobs:
         arch: 'android_arm64_v8a'
         setup-python: 'false'
 
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - uses: android-actions/setup-android@v3
+      with:
+        packages: 'tools platform-tools build-tools'
+
+    - run: sdkmanager "ndk;22.1.7171670"
+
+    - run: echo $ANDROID_HOME $QT_ANDROID_SDK_ROOT
+
     - name: Pry into dirs
-      run: ls -lh && ls -lh ..
+      run: ls -lh ../Qt/ && ls -lh ../Qt/*
+
+    - name: Build App
+      run: |
+        ../Qt/6.2.4/android_arm64_v8a/bin/./qmake» edu.pro -spec android-clang CONFIG+=release
+        make -f Makefile qmake_all
+        make -j4
+        make INSTALL_ROOT=android-build install
+        ../Qt/6.2.4/gcc_64/bin/./androiddeployqt --input android-QmlShaderEffect-deployment-settings.json --output android-build --android-platform android-31 --gradle
         
