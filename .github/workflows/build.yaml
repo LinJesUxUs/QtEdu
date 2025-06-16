@@ -42,7 +42,7 @@ jobs:
 
     - name: Build App
       run: |
-        qmake» edu.pro -spec android-clang CONFIG+=release
+        qmake edu.pro -spec android-clang CONFIG+=release
         make -f Makefile qmake_all
         make -j4
         make INSTALL_ROOT=android-build install
