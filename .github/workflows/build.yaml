@@ -19,6 +19,9 @@ jobs:
         arch: 'gcc_64'
         modules: 'qtimageformats qtshadertools'
 
+    - name: Show architectures available.
+      run: aqt list-qt linux android --arch 6.2.4
+
     - name: Install Qt for Android
       uses: jurplel/install-qt-action@v3
       with:
