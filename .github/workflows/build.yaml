@@ -34,8 +34,6 @@ jobs:
         java-version: '17'
 
     - uses: android-actions/setup-android@v3
-      with:
-        packages: 'tools platform-tools build-tools'
 
     - run: sdkmanager "ndk;22.1.7171670"
 
