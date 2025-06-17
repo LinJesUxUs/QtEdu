@@ -35,7 +35,10 @@ jobs:
 
     - uses: android-actions/setup-android@v3
 
-    - run: sdkmanager "ndk;22.1.7171670" "build-tools;31.0.0" "platforms;android-31"
+    - run: |
+      sdkmanager "ndk;22.1.7171670" "build-tools;31.0.0" "platforms;android-31"
+      sdkmanager --list_installed
+      exit 1
 
     - name: Pry into dirs
       run: ls -lh ../Qt/6.2.4/android_arm64_v8a/bin/ && ls -lh ../Qt/6.2.4/gcc_64/bin/
