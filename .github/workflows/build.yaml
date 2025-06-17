@@ -53,6 +53,6 @@ jobs:
         androiddeployqt --input android-QmlShaderEffect-deployment-settings.json --output android-build --android-platform android-31 --gradle
     - uses: actions/upload-artifact@v4
       with:
-        name: *.apk
-        path: android-build/build/outputs/apk/debug/
+        name: Android package kit
+        path: android-build/build/outputs/apk/debug/*.apk
 
