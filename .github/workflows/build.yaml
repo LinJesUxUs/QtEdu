@@ -38,10 +38,13 @@ jobs:
 
     - name: Setup Android
       uses: android-actions/setup-android@v3
+      with:
+        log-accepted-android-sdk-licenses: false
+        packages: ''
 
     - name: sdkmanager job
       run: |
-        sdkmanager "ndk;22.1.7171670" "build-tools;31.0.0" "platforms;android-31"
+        sdkmanager "build-tools;31.0.0" "cmdline-tools;latest" "ndk;22.1.7171670" "platform-tools" "platforms;android-31"
         sdkmanager --list_installed
         exit 1
 
@@ -50,7 +53,7 @@ jobs:
         export ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
         export PATH="$(pwd)/../Qt/6.2.4/android_arm64_v8a/bin:$(pwd)/../Qt/6.2.4/gcc_64/bin:$JAVA_HOME/bin:$ANDROID_SDK_ROOT/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
         qsb --glsl '"100 es,120,150"' --hlsl 50 --msl 12 -o src/shader.frag.qsb src/shader.frag
-        qmake edu.pro -spec android-clang CONFIG+=release
+        qmake edu.pro -spec android-clang CONFIG+=debug
         make -f Makefile qmake_all
         make -j4
         make INSTALL_ROOT=android-build install
