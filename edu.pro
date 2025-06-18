@@ -21,7 +21,7 @@ SOURCES += src/main.cpp
 # HEADERS +=
 
 system([ src/shader.frag -nt src/shader.frag.qsb ]) {
-    system("qsb --glsl '100 es,120,150' --hlsl 50 --msl 12 -o src/shader.frag.qsb src/shader.frag")
+    system('qsb --glsl "100 es,120,150" --hlsl 50 --msl 12 -o src/shader.frag.qsb src/shader.frag')
 }
 
 # images/Linux.jpg \
