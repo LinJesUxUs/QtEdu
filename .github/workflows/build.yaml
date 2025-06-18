@@ -17,7 +17,7 @@ jobs:
       uses: actions/cache@v4
       with:
         key: cache-qt
-        path: ~/Qt
+        path: /opt/hostedtoolcache/Qt
 
     - name: Cache Java
       uses: actions/cache@v4
@@ -33,7 +33,7 @@ jobs:
         target: 'desktop'
         arch: 'gcc_64'
         modules: 'qtimageformats qtshadertools'
-        dir: '~/'
+        dir: '/opt/hostedtoolcache'
 
     - name: Install Qt for Android
       uses: jurplel/install-qt-action@v3
@@ -43,7 +43,7 @@ jobs:
         target: 'android'
         arch: 'android_arm64_v8a'
         setup-python: 'false'
-        dir: '~/'
+        dir: '/opt/hostedtoolcache'
 
     - name: Setup Java
       uses: actions/setup-java@v4
@@ -65,10 +65,10 @@ jobs:
     - name: Build App
       run: |
         export ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
-        export PATH="~/Qt/6.2.4/android_arm64_v8a/bin:~/Qt/6.2.4/gcc_64/bin:$JAVA_HOME/bin:$ANDROID_SDK_ROOT/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
+        export PATH="/opt/hostedtoolcache/Qt/6.2.4/android_arm64_v8a/bin:/opt/hostedtoolcache/Qt/6.2.4/gcc_64/bin:$JAVA_HOME/bin:$ANDROID_SDK_ROOT/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH"
         export NDK_MAKE=$ANDROID_NDK_ROOT/prebuilt/linux-x86_64/bin/make
-        export QMAKE="~/Qt/6.2.4/android_arm64_v8a/bin/qmake"
-        export ANDROIDDEPLOYQT="~/Qt/6.2.4/gcc_64/bin/androiddeployqt"
+        export QMAKE="/opt/hostedtoolcache/Qt/6.2.4/android_arm64_v8a/bin/qmake"
+        export ANDROIDDEPLOYQT="/opt/hostedtoolcache/Qt/6.2.4/gcc_64/bin/androiddeployqt"
         $QMAKE edu.pro -spec android-clang CONFIG+=debug
         $NDK_MAKE -f Makefile qmake_all
         $NDK_MAKE -j4
