@@ -10,9 +10,26 @@ jobs:
     permissions:
       contents: write
     steps:
-
     - name: Checkout
       uses: actions/checkout@v4
+
+    - name: Cache Qt
+      uses: actions/cache@v4
+      with:
+        key: cache-qt
+        path: ${{github.workspace}}/../Qt
+
+    - name: Cache Java
+      uses: actions/cache@v4
+      with:
+        key: cache-java
+        path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
+
+    - name: Cache Android
+      uses: actions/cache@v4
+      with:
+        key: cache-android
+        path: /usr/local/lib/android
 
     - name: Install Qt for Desktop
       uses: jurplel/install-qt-action@v3
@@ -22,7 +39,6 @@ jobs:
         target: 'desktop'
         arch: 'gcc_64'
         modules: 'qtimageformats qtshadertools'
-        cache: true
 
     - name: Install Qt for Android
       uses: jurplel/install-qt-action@v3
@@ -32,7 +48,6 @@ jobs:
         target: 'android'
         arch: 'android_arm64_v8a'
         setup-python: 'false'
-        cache: true
 
     - name: Setup Java
       uses: actions/setup-java@v4
