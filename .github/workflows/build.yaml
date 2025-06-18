@@ -25,6 +25,18 @@ jobs:
         key: cache-java
         path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk
 
+    - name: Cache Android
+      uses: actions/cache@v4
+      with:
+        key: cache-android
+        path: /usr/local/lib/android/sdk
+
+    - name: Cache build
+      uses: actions/cache@v4
+      with:
+        key: cache-build
+        path: ${{ github.workspace }}/android-build
+
     - name: Install Qt for Desktop
       uses: jurplel/install-qt-action@v3
       with:
