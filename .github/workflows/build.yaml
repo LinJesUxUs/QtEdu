@@ -13,12 +13,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Cache Qt
-      uses: actions/cache@v4
-      with:
-        key: cache-qt
-        path: /opt/hostedtoolcache/Qt
-
     - name: Cache Java
       uses: actions/cache@v4
       with:
