@@ -65,7 +65,7 @@ jobs:
 
     - name: sdkmanager job
       run: |
-        sdkmanager "build-tools;31.0.0" "cmdline-tools;latest" "ndk;22.1.7171670" "platform-tools" "platforms;android-31"
+        sdkmanager "build-tools;31.0.0" "ndk;22.1.7171670" "platform-tools" "platforms;android-31"
         sdkmanager --list_installed
 
     - name: Build App
